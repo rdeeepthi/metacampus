@@ -1,0 +1,531 @@
+// @import 'src/styles/variables';
+// styles/variables.scss
+
+// Colors
+$primary-color: #2c3e50;
+$secondary-color: #3498db;
+$accent-color: #e74c3c;
+$light-color: #ecf0f1;
+$dark-color: #2c3e50;
+
+// Breakpoints
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
+.navbar-container {
+  background-color: $primary-color;
+  color: white;
+  height: 100vh;
+  width: 280px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  transition: all 0.3s ease;
+
+  .navbar-header {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+
+      .logo {
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+      }
+
+      .college-name {
+        font-size: 18px;
+        font-weight: 600;
+      }
+    }
+
+    .hamburger-menu {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 5px;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+
+      span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background-color: white;
+        border-radius: 3px;
+        transition: all 0.3s ease;
+      }
+    }
+  }
+
+  .navbar-links {
+    flex: 1;
+    overflow-y: auto;
+    padding: 15px 0;
+    display: flex;
+    flex-direction: column;
+
+    .main-menu {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      .menu-item {
+        position: relative;
+
+        a {
+          display: flex;
+          align-items: center;
+          padding: 12px 20px;
+          color: rgba(255, 255, 255, 0.8);
+          text-decoration: none;
+          transition: all 0.2s ease;
+          font-size: 14px;
+
+          &:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+          }
+
+          .icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+          }
+
+          .dashboard-icon {
+            background-image: url('assets/icons/dashboard.svg');
+          }
+
+          .academic-icon {
+            background-image: url('assets/icons/academic.svg');
+          }
+
+          .student-icon {
+            background-image: url('assets/icons/student.svg');
+          }
+
+          .faculty-icon {
+            background-image: url('assets/icons/faculty.svg');
+          }
+
+          .exam-icon {
+            background-image: url('assets/icons/exam.svg');
+          }
+
+          .assignment-icon {
+            background-image: url('assets/icons/assignment.svg');
+          }
+
+          .timetable-icon {
+            background-image: url('assets/icons/timetable.svg');
+          }
+
+          .attendance-icon {
+            background-image: url('assets/icons/attendance.svg');
+          }
+
+          .fee-icon {
+            background-image: url('assets/icons/fee.svg');
+          }
+
+          .library-icon {
+            background-image: url('assets/icons/library.svg');
+          }
+
+          .hostel-icon {
+            background-image: url('assets/icons/hostel.svg');
+          }
+
+          .transport-icon {
+            background-image: url('assets/icons/transport.svg');
+          }
+
+          .communication-icon {
+            background-image: url('assets/icons/communication.svg');
+          }
+
+          .placement-icon {
+            background-image: url('assets/icons/placement.svg');
+          }
+
+          .report-icon {
+            background-image: url('assets/icons/report.svg');
+          }
+
+          .settings-icon {
+            background-image: url('assets/icons/settings.svg');
+          }
+
+          .dropdown-arrow {
+            width: 16px;
+            height: 16px;
+            margin-left: auto;
+            background-image: url('assets/icons/chevron-down.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            transition: transform 0.3s ease;
+          }
+        }
+
+        &.active {
+          > a {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-weight: 500;
+          }
+        }
+
+        &.with-dropdown {
+          > a {
+            .dropdown-arrow {
+              transform: rotate(-90deg);
+            }
+          }
+
+          &.active {
+            > a {
+              .dropdown-arrow {
+                transform: rotate(0deg);
+              }
+            }
+          }
+        }
+
+        .dropdown-menu {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          background-color: darken($primary-color, 5%);
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.3s ease;
+
+          li {
+            a {
+              padding: 10px 20px 10px 50px;
+              font-size: 13px;
+
+              &:hover {
+                background-color: rgba(255, 255, 255, 0.05);
+              }
+            }
+          }
+        }
+
+        &.active {
+          .dropdown-menu {
+            max-height: 500px;
+          }
+        }
+      }
+    }
+
+    .user-profile {
+      margin-top: auto;
+      padding: 15px 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+      .profile-info {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+
+        .user-avatar {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          margin-right: 10px;
+          object-fit: cover;
+        }
+
+        .user-details {
+          display: flex;
+          flex-direction: column;
+
+          .user-name {
+            font-size: 14px;
+            font-weight: 500;
+          }
+
+          .user-role {
+            font-size: 12px;
+            opacity: 0.8;
+          }
+        }
+      }
+
+      .logout-btn {
+        display: flex;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        color: white;
+        padding: 8px 15px;
+        border-radius: 4px;
+        width: 100%;
+        cursor: pointer;
+        transition: background 0.2s ease;
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.2);
+        }
+
+        .logout-icon {
+          width: 16px;
+          height: 16px;
+          margin-right: 8px;
+          background-image: url('assets/icons/logout.svg');
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+
+        span {
+          font-size: 13px;
+        }
+      }
+    }
+  }
+}
+
+// Mobile styles
+@media (max-width: 992px) {
+  .navbar-container {
+    width: 70px;
+    overflow: hidden;
+
+    .navbar-header {
+      justify-content: center;
+      padding: 15px;
+
+      .logo-container {
+        .college-name {
+          display: none;
+        }
+      }
+    }
+
+    .navbar-links {
+      .main-menu {
+        .menu-item {
+          a {
+            justify-content: center;
+            padding: 15px 0;
+
+            span {
+              display: none;
+            }
+
+            .icon {
+              margin-right: 0;
+            }
+
+            .dropdown-arrow {
+              display: none;
+            }
+          }
+
+          .dropdown-menu {
+            display: none;
+          }
+        }
+      }
+
+      .user-profile {
+        padding: 10px;
+
+        .profile-info {
+          justify-content: center;
+
+          .user-details {
+            display: none;
+          }
+        }
+
+        .logout-btn {
+          justify-content: center;
+          padding: 8px 0;
+
+          span {
+            display: none;
+          }
+        }
+      }
+    }
+
+    &:hover {
+      width: 280px;
+
+      .navbar-header {
+        justify-content: space-between;
+
+        .logo-container {
+          .college-name {
+            display: block;
+          }
+        }
+      }
+
+      .navbar-links {
+        .main-menu {
+          .menu-item {
+            a {
+              justify-content: flex-start;
+              padding: 12px 20px;
+
+              span {
+                display: inline;
+              }
+
+              .icon {
+                margin-right: 10px;
+              }
+
+              .dropdown-arrow {
+                display: block;
+              }
+            }
+
+            &.with-dropdown {
+              .dropdown-menu {
+                display: block;
+              }
+            }
+          }
+        }
+
+        .user-profile {
+          padding: 15px 20px;
+
+          .profile-info {
+            justify-content: flex-start;
+
+            .user-details {
+              display: flex;
+            }
+          }
+
+          .logout-btn {
+            justify-content: flex-start;
+            padding: 8px 15px;
+
+            span {
+              display: inline;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-container {
+    width: 100%;
+    height: auto;
+    min-height: 60px;
+    position: relative;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 15px;
+
+    .navbar-header {
+      border-bottom: none;
+      padding: 0;
+      width: 100%;
+      justify-content: space-between;
+
+      .hamburger-menu {
+        display: flex;
+      }
+    }
+
+    .navbar-links {
+      position: fixed;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      background-color: $primary-color;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      padding: 0;
+
+      &.active {
+        max-height: calc(100vh - 60px);
+        padding: 15px 0;
+        overflow-y: auto;
+      }
+
+      .main-menu {
+        .menu-item {
+          a {
+            justify-content: flex-start;
+            padding: 12px 20px;
+
+            span {
+              display: inline;
+            }
+
+            .icon {
+              margin-right: 10px;
+            }
+
+            .dropdown-arrow {
+              display: block;
+            }
+          }
+
+          &.with-dropdown {
+            .dropdown-menu {
+              display: block;
+            }
+          }
+        }
+      }
+
+      .user-profile {
+        padding: 15px 20px;
+
+        .profile-info {
+          justify-content: flex-start;
+
+          .user-details {
+            display: flex;
+          }
+        }
+
+        .logout-btn {
+          justify-content: flex-start;
+          padding: 8px 15px;
+
+          span {
+            display: inline;
+          }
+        }
+      }
+    }
+
+    &:hover {
+      width: 100%;
+    }
+  }
+}

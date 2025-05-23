@@ -1,0 +1,161 @@
+<nav class="navbar-container">
+  <div class="navbar-header">
+    <div class="logo-container">
+      <img src="assets/images/college-logo.png" alt="College Logo" class="logo">
+      <span class="college-name">ABC College</span>
+    </div>
+    <button class="hamburger-menu" (click)="toggleMobileMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <div class="navbar-links" [class.active]="isMobileMenuOpen">
+    <ul class="main-menu">
+      <li class="menu-item">
+        <a routerLink="/dashboard" routerLinkActive="active" (click)="closeMobileMenu()">
+          <i class="icon dashboard-icon"></i>
+          <span>Dashboard</span>
+        </a>
+      </li>
+
+      <li class="menu-item with-dropdown" (click)="toggleDropdown($event)">
+        <a>
+          <i class="icon academic-icon"></i>
+          <span>Academic</span>
+          <i class="dropdown-arrow"></i>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a routerLink="/academic/courses" (click)="closeMobileMenu()">Courses</a></li>
+          <li><a routerLink="/academic/curriculum" (click)="closeMobileMenu()">Curriculum</a></li>
+          <li><a routerLink="/academic/grading" (click)="closeMobileMenu()">Grading</a></li>
+        </ul>
+      </li>
+
+      <li class="menu-item with-dropdown" (click)="toggleDropdown($event)">
+        <a>
+          <i class="icon student-icon"></i>
+          <span>Student Management</span>
+          <i class="dropdown-arrow"></i>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a routerLink="/students/admissions" (click)="closeMobileMenu()">Admissions</a></li>
+          <li><a routerLink="/students/records" (click)="closeMobileMenu()">Student Records</a></li>
+          <li><a routerLink="/students/promotions" (click)="closeMobileMenu()">Promotions</a></li>
+        </ul>
+      </li>
+
+      <li class="menu-item">
+        <a routerLink="/faculty" routerLinkActive="active" (click)="closeMobileMenu()">
+          <i class="icon faculty-icon"></i>
+          <span>Faculty & Staff</span>
+        </a>
+      </li>
+
+      <li class="menu-item with-dropdown" (click)="toggleDropdown($event)">
+        <a>
+          <i class="icon exam-icon"></i>
+          <span>Examinations</span>
+          <i class="dropdown-arrow"></i>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a routerLink="/exams/schedule" (click)="closeMobileMenu()">Schedule</a></li>
+          <li><a routerLink="/exams/results" (click)="closeMobileMenu()">Results</a></li>
+          <li><a routerLink="/exams/analysis" (click)="closeMobileMenu()">Analysis</a></li>
+        </ul>
+      </li>
+
+      <li class="menu-item">
+        <a routerLink="/assignments" routerLinkActive="active" (click)="closeMobileMenu()">
+          <i class="icon assignment-icon"></i>
+          <span>Assignments & Materials</span>
+        </a>
+      </li>
+
+      <li class="menu-item">
+        <a routerLink="/timetable" routerLinkActive="active" (click)="closeMobileMenu()">
+          <i class="icon timetable-icon"></i>
+          <span>Timetable</span>
+        </a>
+      </li>
+
+      <li class="menu-item">
+        <a routerLink="/attendance" routerLinkActive="active" (click)="closeMobileMenu()">
+          <i class="icon attendance-icon"></i>
+          <span>Attendance</span>
+        </a>
+      </li>
+
+      <li class="menu-item">
+        <a routerLink="/fees" routerLinkActive="active" (click)="closeMobileMenu()">
+          <i class="icon fee-icon"></i>
+          <span>Fee Management</span>
+        </a>
+      </li>
+
+      <li class="menu-item">
+        <a routerLink="/library" routerLinkActive="active" (click)="closeMobileMenu()">
+          <i class="icon library-icon"></i>
+          <span>Library</span>
+        </a>
+      </li>
+
+      <li class="menu-item">
+        <a routerLink="/hostel" routerLinkActive="active" (click)="closeMobileMenu()">
+          <i class="icon hostel-icon"></i>
+          <span>Hostel</span>
+        </a>
+      </li>
+
+      <li class="menu-item">
+        <a routerLink="/transport" routerLinkActive="active" (click)="closeMobileMenu()">
+          <i class="icon transport-icon"></i>
+          <span>Transport</span>
+        </a>
+      </li>
+
+      <li class="menu-item">
+        <a routerLink="/communication" routerLinkActive="active" (click)="closeMobileMenu()">
+          <i class="icon communication-icon"></i>
+          <span>Communication</span>
+        </a>
+      </li>
+
+      <li class="menu-item">
+        <a routerLink="/placements" routerLinkActive="active" (click)="closeMobileMenu()">
+          <i class="icon placement-icon"></i>
+          <span>Placements</span>
+        </a>
+      </li>
+
+      <li class="menu-item">
+        <a routerLink="/reports" routerLinkActive="active" (click)="closeMobileMenu()">
+          <i class="icon report-icon"></i>
+          <span>Reports & Analytics</span>
+        </a>
+      </li>
+
+      <li class="menu-item">
+        <a routerLink="/settings" routerLinkActive="active" (click)="closeMobileMenu()">
+          <i class="icon settings-icon"></i>
+          <span>System Settings</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="user-profile">
+      <div class="profile-info">
+        <img src="assets/images/user-avatar.jpg" alt="User Avatar" class="user-avatar">
+        <div class="user-details">
+          <span class="user-name">Admin User</span>
+          <span class="user-role">Administrator</span>
+        </div>
+      </div>
+      <button class="logout-btn" (click)="logout()">
+        <i class="icon logout-icon"></i>
+        <span>Logout</span>
+      </button>
+    </div>
+  </div>
+</nav>
