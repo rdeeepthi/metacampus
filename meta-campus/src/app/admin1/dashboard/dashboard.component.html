@@ -1,0 +1,211 @@
+<div class="admin-dashboard">
+  <!-- Header -->
+  <div class="dashboard-header">
+    <h1>Admin Dashboard</h1>
+    <p>Welcome back! Here's what's happening today.</p>
+  </div>
+
+  <!-- KPI Cards -->
+  <div class="kpi-section">
+    <h2>Key Metrics</h2>
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-icon">👨‍🎓</div>
+        <div class="kpi-content">
+          <h3>Total Students</h3>
+          <p>{{ kpis.totalStudents }}</p>
+        </div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-icon">👩‍🏫</div>
+        <div class="kpi-content">
+          <h3>Faculty Members</h3>
+          <p>{{ kpis.totalFaculty }}</p>
+        </div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-icon">📚</div>
+        <div class="kpi-content">
+          <h3>Courses Offered</h3>
+          <p>{{ kpis.totalCourses }}</p>
+        </div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-icon">📝</div>
+        <div class="kpi-content">
+          <h3>Active Assignments</h3>
+          <p>{{ kpis.activeAssignments }}</p>
+        </div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-icon">🧾</div>
+        <div class="kpi-content">
+          <h3>Pending Payments</h3>
+          <p>{{ kpis.pendingPayments }}</p>
+        </div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-icon">🏫</div>
+        <div class="kpi-content">
+          <h3>Ongoing Exams</h3>
+          <p>{{ kpis.ongoingExams }}</p>
+        </div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-icon">🏢</div>
+        <div class="kpi-content">
+          <h3>Departments</h3>
+          <p>{{ kpis.totalDepartments }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Analytics Section -->
+  <div class="analytics-section">
+    <div class="analytics-charts">
+      <div class="chart-card">
+        <h3>Student Attendance Trends</h3>
+        <div class="chart-container">
+          <!-- In a real app, use a charting library like Chart.js -->
+          <div class="mock-chart">
+            <div *ngFor="let value of attendanceData.values; let i = index" 
+                 class="chart-bar" [style.height]="value + '%'">
+              <span class="chart-label">{{ attendanceData.labels[i] }}</span>
+              <span class="chart-value">{{ value }}%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chart-card">
+        <h3>Exam Results Summary</h3>
+        <div class="chart-container">
+          <!-- Mock pie chart -->
+          <div class="mock-pie-chart">
+            <div class="pie-slice pass" [style.transform]="'rotate(' + (examResults.pass * 3.6) + 'deg)'">
+              <span class="pie-label">Pass {{ examResults.pass }}%</span>
+            </div>
+            <div class="pie-slice fail" [style.transform]="'rotate(' + (examResults.fail * 3.6) + 'deg)'">
+              <span class="pie-label">Fail {{ examResults.fail }}%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chart-card">
+        <h3>Fee Collection Status</h3>
+        <div class="chart-container">
+          <div class="mock-bar-chart">
+            <div class="bar collected" [style.width]="feeCollection.collected + '%'">
+              <span>Collected {{ feeCollection.collected }}%</span>
+            </div>
+            <div class="bar pending" [style.width]="feeCollection.pending + '%'">
+              <span>Pending {{ feeCollection.pending }}%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="top-performers">
+      <h3>Top Performing Students</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Program</th>
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let student of topPerformers">
+            <td>{{ student.name }}</td>
+            <td>{{ student.program }}</td>
+            <td>{{ student.score }}%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Bottom Section -->
+  <div class="bottom-section">
+    <!-- Upcoming Events -->
+    <div class="events-card">
+      <h2>Upcoming Events</h2>
+      <div class="events-list">
+        <div *ngFor="let event of upcomingEvents" class="event-item">
+          <div class="event-date">
+            <span class="day">{{ event.date | date:'d' }}</span>
+            <span class="month">{{ event.date | date:'MMM' }}</span>
+          </div>
+          <div class="event-details">
+            <h4>{{ event.title }}</h4>
+            <span class="event-type">{{ event.type }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="quick-actions-card">
+      <h2>Quick Actions</h2>
+      <div class="actions-grid">
+        <a *ngFor="let action of quickActions" [href]="action.link" class="action-item">
+          <span class="action-icon">{{ action.icon }}</span>
+          <span class="action-title">{{ action.title }}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right Sidebar -->
+  <div class="right-sidebar">
+    <!-- Announcements -->
+    <div class="announcements-card">
+      <h2>Announcements</h2>
+      <div class="announcements-list">
+        <div *ngFor="let announcement of announcements" class="announcement-item" [class.high-priority]="announcement.priority === 'high'">
+          <h4>{{ announcement.title }}</h4>
+          <p>{{ announcement.content }}</p>
+          <span class="announcement-date">{{ announcement.date | date:'mediumDate' }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pending Tasks -->
+    <div class="tasks-card">
+      <h2>Pending Tasks</h2>
+      <div class="tasks-list">
+        <a *ngFor="let task of pendingTasks" [href]="task.link" class="task-item">
+          <span class="task-icon">{{ task.icon }}</span>
+          <div class="task-details">
+            <h4>{{ task.title }}</h4>
+            <p>{{ task.count }} pending</p>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- System Health -->
+    <div class="system-health-card">
+      <h2>System Health</h2>
+      <div class="health-status">
+        <div class="status-indicator" [class.operational]="systemHealth.status === 'Operational'"></div>
+        <span>Status: {{ systemHealth.status }}</span>
+      </div>
+      <div class="health-metrics">
+        <p><strong>Uptime:</strong> {{ systemHealth.uptime }}</p>
+        <p><strong>Last Backup:</strong> {{ systemHealth.lastBackup | date:'mediumDate' }}</p>
+        <p><strong>Logins Today:</strong> {{ systemHealth.loginsToday }}</p>
+      </div>
+    </div>
+  </div>
+</div>
